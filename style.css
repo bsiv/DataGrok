@@ -1,0 +1,38 @@
+/* General */
+body { margin:0; font-family: 'Roboto', sans-serif; color:#111; line-height:1.6; scroll-behavior: smooth; }
+a { text-decoration:none; color:#0072f5; }
+a:hover { text-decoration:underline; }
+
+/* Header */
+header { text-align:center; padding:50px 20px; background:#f7f7f7; position:sticky; top:0; z-index:100; }
+nav ul { display:flex; justify-content:center; list-style:none; padding:0; margin:0 0 20px 0; }
+nav ul li { margin: 0 15px; }
+nav ul li a.active { color:#005bb5; font-weight:700; }
+.hero h1 { margin:0; font-size:2.5em; opacity:0; transform: translateY(-20px); animation: fadeDown 1s forwards 0.5s; }
+.hero p { color:#555; font-size:1.2em; opacity:0; transform: translateY(20px); animation: fadeUp 1s forwards 1.5s; }
+
+/* Hero animations */
+@keyframes fadeDown { to { opacity:1; transform: translateY(0); } }
+@keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+
+/* Sections */
+section { padding:80px 20px; max-width:900px; margin:0 auto; opacity:0; transform: translateY(20px); transition: all 0.8s ease; }
+section.visible { opacity:1; transform: translateY(0); }
+h2 { font-size:2em; margin-bottom:20px; text-align:center; }
+
+/* Skills / Projects */
+.skills, .projects { display:grid; grid-gap:20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.skill, .project { padding:20px; border:1px solid #eee; border-radius:8px; background:#fff; transition: transform 0.3s, box-shadow 0.3s; }
+.skill:hover, .project:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+/* Form */
+form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
+input, textarea { padding:10px; border:1px solid #ccc; border-radius:5px; font-size:1em; width:100%; }
+button { padding:10px; background:#0072f5; color:white; border:none; border-radius:5px; cursor:pointer; font-size:1em; }
+button:hover { background:#005bb5; }
+
+/* Footer */
+footer { text-align:center; padding:20px; background:#f7f7f7; color:#555; }
+
+/* Offset for smooth scroll */
+:target::before { content: ""; display: block; height: 80px; margin-top: -80px; }
