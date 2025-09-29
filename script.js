@@ -21,3 +21,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
   });
 });
+
+const showMoreBtn = document.getElementById('showMoreBtn');
+const extraProjects = document.getElementById('extraProjects');
+
+showMoreBtn.addEventListener('click', () => {
+  if (extraProjects.style.display === 'none') {
+    extraProjects.style.display = 'grid';
+    showMoreBtn.textContent = 'Show Less Projects';
+  } else {
+    extraProjects.style.display = 'none';
+    showMoreBtn.textContent = 'Show More Projects';
+  }
+});
