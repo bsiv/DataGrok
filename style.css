@@ -1,38 +1,44 @@
-/* General */
-body { margin:0; font-family: 'Roboto', sans-serif; color:#111; line-height:1.6; scroll-behavior: smooth; }
-a { text-decoration:none; color:#0072f5; }
-a:hover { text-decoration:underline; }
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Header */
-header { text-align:center; padding:50px 20px; background:#f7f7f7; position:sticky; top:0; z-index:100; }
-nav ul { display:flex; justify-content:center; list-style:none; padding:0; margin:0 0 20px 0; }
-nav ul li { margin: 0 15px; }
-nav ul li a.active { color:#005bb5; font-weight:700; }
-.hero h1 { margin:0; font-size:2.5em; opacity:0; transform: translateY(-20px); animation: fadeDown 1s forwards 0.5s; }
-.hero p { color:#555; font-size:1.2em; opacity:0; transform: translateY(20px); animation: fadeUp 1s forwards 1.5s; }
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #111;
+  background-color: #f0f8ff;
+}
 
-/* Hero animations */
-@keyframes fadeDown { to { opacity:1; transform: translateY(0); } }
-@keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+a { text-decoration: none; color: #4a90e2; }
+a:hover { text-decoration: underline; }
 
-/* Sections */
-section { padding:80px 20px; max-width:900px; margin:0 auto; opacity:0; transform: translateY(20px); transition: all 0.8s ease; }
-section.visible { opacity:1; transform: translateY(0); }
-h2 { font-size:2em; margin-bottom:20px; text-align:center; }
+header { padding: 5rem 0; text-align: center; background-color: #e6f2ff; }
+header h1 { font-size: 2.5rem; color: #111; margin-bottom: 0.5rem; opacity: 0; transform: translateY(-20px); animation: fadeDown 1s forwards 0.5s; }
+header p { font-size: 1.2rem; font-weight: 500; opacity: 0; transform: translateY(20px); animation: fadeUp 1s forwards 1s; }
+header .tagline { font-weight: 300; color: #555; opacity: 0; transform: translateY(20px); animation: fadeUp 1s forwards 1.5s; }
 
-/* Skills / Projects */
-.skills, .projects { display:grid; grid-gap:20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-.skill, .project { padding:20px; border:1px solid #eee; border-radius:8px; background:#fff; transition: transform 0.3s, box-shadow 0.3s; }
-.skill:hover, .project:hover { transform: translateY(-10px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+@keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-/* Form */
-form { display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto; }
-input, textarea { padding:10px; border:1px solid #ccc; border-radius:5px; font-size:1em; width:100%; }
-button { padding:10px; background:#0072f5; color:white; border:none; border-radius:5px; cursor:pointer; font-size:1em; }
-button:hover { background:#005bb5; }
+.container { width: 80%; margin: 0 auto; max-width: 1200px; }
 
-/* Footer */
-footer { text-align:center; padding:20px; background:#f7f7f7; color:#555; }
+section { padding: 3rem 0; opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+section.visible { opacity: 1; transform: translateY(0); }
+h2 { text-align: center; font-size: 2rem; color: #111; margin-bottom: 1rem; }
+p { text-align: center; font-size: 1.1rem; color: #555; margin-bottom: 2rem; }
 
-/* Offset for smooth scroll */
-:target::before { content: ""; display: block; height: 80px; margin-top: -80px; }
+.skills, .projects { display: grid; grid-gap: 20px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.skill, .project { background-color: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
+.skill:hover, .project:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+.project h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
+.project p { font-size: 1rem; color: #555; }
+
+form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto; }
+input, textarea { padding: 0.8rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+button { padding: 1rem; background-color: #4a90e2; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; transition: background 0.3s; }
+button:hover { background-color: #357abd; }
+
+footer { background-color: #e6f2ff; color: #111; padding: 2rem 0; text-align: center; }
+footer a { color: #4a90e2; }
+footer a:hover { text-decoration: underline; }
+
+:target::before { content: ''; display: block; height: 80px; margin-top: -80px; }
