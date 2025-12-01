@@ -4,8 +4,328 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DataGrok Solutions - Data & Analytics Experts</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      line-height: 1.6; 
+      color: #1f2937; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow-x: hidden;
+    }
+    
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    
+    /* Hero Section */
+    .hero-header { 
+      min-height: 100vh;
+      display: flex; 
+      flex-direction: column;
+      align-items: center; 
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero-logo { 
+      width: 140px; 
+      height: auto; 
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .hero-text { 
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-text h1 { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      color: #ffffff; 
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .company-summary { 
+      font-size: 1.25rem; 
+      color: rgba(255,255,255,0.95); 
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+    
+    .btn-primary { 
+      display: inline-block;
+      padding: 1rem 2.5rem; 
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      color: #fff; 
+      border-radius: 50px; 
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .btn-primary:hover { 
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    /* Main Content Area */
+    .main-content {
+      background: #f9fafb;
+      position: relative;
+      z-index: 2;
+      margin-top: -50px;
+      border-radius: 50px 50px 0 0;
+    }
+    
+    .container { 
+      width: 90%; 
+      margin: 0 auto; 
+      max-width: 1200px; 
+    }
+    
+    section { 
+      padding: 5rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h2 { 
+      text-align: center; 
+      font-size: 2.5rem; 
+      font-weight: 700;
+      color: #1f2937; 
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+      border-radius: 2px;
+    }
+    
+    section > .container > p { 
+      text-align: center; 
+      font-size: 1.15rem; 
+      color: #6b7280; 
+      margin: 2rem auto 3rem;
+      max-width: 700px;
+    }
+    
+    /* Cards Grid */
+    .team, .services, .projects { 
+      display: grid; 
+      gap: 2rem; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    }
+    
+    .team-member, .service, .project { 
+      background: #ffffff; 
+      padding: 2rem; 
+      border-radius: 20px; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: all 0.3s ease; 
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .team-member:hover, .service:hover, .project:hover { 
+      transform: translateY(-10px); 
+      box-shadow: 0 20px 40px rgba(102,126,234,0.15);
+      border-color: rgba(102,126,234,0.3);
+    }
+    
+    .team-member img, .service img, .project img { 
+      width: 100%; 
+      height: 180px; 
+      object-fit: cover; 
+      border-radius: 15px; 
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .team-member:hover img, .service:hover img, .project:hover img {
+      transform: scale(1.05);
+    }
+    
+    .team-member h4, .service h3, .project h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.8rem;
+    }
+    
+    .team-member p, .service p, .project p {
+      color: #6b7280;
+      font-size: 1rem;
+      text-align: center;
+      margin: 0;
+    }
+    
+    /* Form Styling */
+    form { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1.2rem; 
+      max-width: 600px; 
+      margin: 0 auto; 
+    }
+    
+    input, textarea { 
+      padding: 1rem 1.2rem; 
+      border: 2px solid #e5e7eb; 
+      border-radius: 12px; 
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      background: #ffffff;
+    }
+    
+    input:focus, textarea:focus { 
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
+    }
+    
+    button { 
+      padding: 1.2rem; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff; 
+      border: none; 
+      border-radius: 12px; 
+      cursor: pointer; 
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+    }
+    
+    button:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(102,126,234,0.4);
+    }
+    
+    #extraProjects { 
+      margin-top: 2rem; 
+      display: none;
+    }
+    
+    #showMoreBtn { 
+      display: block; 
+      margin: 3rem auto 0; 
+      padding: 1rem 2rem; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff; 
+      border-radius: 50px;
+      font-weight: 600;
+    }
+    
+    .visible-grid { 
+      display: grid !important; 
+    }
+    
+    .contact-info {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+      color: #6b7280;
+    }
+    
+    .contact-info a {
+      color: #667eea;
+      font-weight: 500;
+    }
+    
+    .contact-info a:hover {
+      color: #764ba2;
+    }
+    
+    /* Footer */
+    footer { 
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      color: #e5e7eb; 
+      padding: 3rem 0; 
+      text-align: center; 
+    }
+    
+    footer p {
+      color: #9ca3af;
+      margin-bottom: 0.8rem;
+    }
+    
+    footer a { 
+      color: #a5b4fc;
+      font-weight: 500;
+    }
+    
+    footer a:hover { 
+      color: #c7d2fe;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-text h1 { font-size: 2.5rem; }
+      .company-summary { font-size: 1.1rem; }
+      h2 { font-size: 2rem; }
+      .team, .services, .projects { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,123 +335,165 @@
     <div class="hero-text">
       <h1>DataGrok Solutions</h1>
       <p class="company-summary">
-        DataGrok Solutions delivers end-to-end data and analytics solutions using Microsoft, SAS, and modern cloud platforms. 
-        We help businesses in finance, insurance, education, health, and defined benefits domains transform data into actionable insights, dashboards, and advanced analytics for measurable business impact.
+        DataGrok Solutions delivers end-to-end data and analytics solutions using Microsoft Fabric, SAS, and modern cloud platforms. 
+        We specialize in making businesses AI-ready by implementing Microsoft Fabric solutions across organizations, transforming data into actionable insights, and enabling advanced AI capabilities for measurable business impact in finance, insurance, education, health, and defined benefits domains.
       </p>
     </div>
     <a href="#contact" class="btn-primary">Get in Touch</a>
   </div>
 </header>
 
-<section id="about">
-  <div class="container">
-    <h2>About DataGrok</h2>
-    <p>At DataGrok, we empower organisations to make the most of their data. Our solutions are delivered by highly skilled data specialists and are designed to deliver measurable business impact.</p>
-    <div class="team">
-      <div class="team-member">
-        <img src="https://via.placeholder.com/300x150?text=Team+Specialist" alt="Our Data Specialists">
-        <h4>Data Specialist</h4>
-        <p>Expert in Microsoft, SAS, and modern data platforms</p>
-      </div>
-      <div class="team-member">
-        <img src="https://via.placeholder.com/300x150?text=Team+Specialist" alt="Our Data Specialists">
-        <h4>Data Specialist</h4>
-        <p>Expert in analytics, cloud integration, and Power BI</p>
-      </div>
-      <div class="team-member">
-        <img src="https://via.placeholder.com/300x150?text=Team+Specialist" alt="Our Data Specialists">
-        <h4>Data Specialist</h4>
-        <p>Expert in ETL, Snowflake, and data migration</p>
+<div class="main-content">
+  <section id="about">
+    <div class="container">
+      <h2>About DataGrok</h2>
+      <p>At DataGrok, we empower organisations to make the most of their data and become AI-ready. As certified Microsoft Fabric consultants, we implement enterprise-wide Fabric solutions that unify your data estate and enable advanced AI capabilities. Our solutions are delivered by highly skilled data specialists and are designed to deliver measurable business impact.</p>
+      <div class="team">
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=180&fit=crop" alt="Data Specialist">
+          <h4>Microsoft Fabric Consultant</h4>
+          <p>Expert in Fabric implementation, OneLake, and AI readiness</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=300&h=180&fit=crop" alt="Analytics Expert">
+          <h4>AI & Analytics Specialist</h4>
+          <p>Expert in AI implementation, Power BI, and predictive analytics</p>
+        </div>
+        <div class="team-member">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=180&fit=crop" alt="ETL Engineer">
+          <h4>Data Engineering Specialist</h4>
+          <p>Expert in ETL, Snowflake, and enterprise data migration</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="services">
-  <div class="container">
-    <h2>Our Solutions</h2>
-    <div class="services">
-      <div class="service">
-        <img src="https://via.placeholder.com/150x150?text=Data+Engineering" alt="Data Engineering">
-        <h3>Data Engineering</h3>
-        <p>End-to-end ETL/ELT pipelines, data modeling, and data warehouse solutions.</p>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/150x150?text=Analytics+BI" alt="Analytics">
-        <h3>Analytics & BI</h3>
-        <p>Power BI, Tableau, and custom reporting to deliver actionable insights.</p>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/150x150?text=Cloud+Solutions" alt="Cloud Solutions">
-        <h3>Cloud Solutions</h3>
-        <p>Microsoft Fabric, Snowflake, Databricks, and Azure-based cloud integration.</p>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/150x150?text=SAS+Solutions" alt="SAS Solutions">
-        <h3>SAS Modernisation</h3>
-        <p>Transform and optimise SAS programs, macros, and DI Studio workflows into modern platforms.</p>
+  <section id="services">
+    <div class="container">
+      <h2>Our Solutions</h2>
+      <div class="services">
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=300&h=180&fit=crop" alt="Microsoft Fabric">
+          <h3>Microsoft Fabric Solutions</h3>
+          <p>Enterprise-wide Fabric implementation with OneLake, Data Factory, and real-time analytics to unify your data estate.</p>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=300&h=180&fit=crop" alt="AI Implementation">
+          <h3>AI Readiness & Implementation</h3>
+          <p>Make your business AI-ready with Azure AI, Copilot integration, and machine learning models over your data.</p>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=300&h=180&fit=crop" alt="Data Engineering">
+          <h3>Data Engineering</h3>
+          <p>End-to-end ETL/ELT pipelines, data modeling, and modern data warehouse solutions.</p>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=180&fit=crop" alt="Analytics">
+          <h3>Analytics & BI</h3>
+          <p>Power BI, Tableau, and custom reporting to deliver AI-powered actionable insights.</p>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&h=180&fit=crop" alt="Cloud Solutions">
+          <h3>Cloud Solutions</h3>
+          <p>Snowflake, Databricks, and Azure-based cloud integration for scalable data platforms.</p>
+        </div>
+        <div class="service">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=180&fit=crop" alt="SAS Solutions">
+          <h3>SAS Modernisation</h3>
+          <p>Transform SAS programs, macros, and DI Studio workflows into modern AI-ready platforms.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="projects">
-  <div class="container">
-    <h2>Case Studies</h2>
-    <div class="projects">
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200?text=Project+1" alt="EDW Pourato Project">
-        <h3>EDW Pourato Migration – Ministry of Education NZ</h3>
-        <p>Migrated funding data from legacy EDUMIS to Pourato using SSIS, BimlFlex, and Power BI.</p>
+  <section id="projects">
+    <div class="container">
+      <h2>Our Expertise</h2>
+      <div class="projects">
+        <div class="project">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=180&fit=crop" alt="EDW Migration">
+          <h3>Enterprise Data Warehouse Migration</h3>
+          <p>Modernizing legacy data warehouses to Microsoft Fabric with seamless integration and Power BI analytics.</p>
+        </div>
+        <div class="project">
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=180&fit=crop" alt="Government Analytics">
+          <h3>Government & Public Sector Analytics</h3>
+          <p>Implementing policy and funding analytics solutions with advanced data modeling and reporting.</p>
+        </div>
+        <div class="project">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=180&fit=crop" alt="Snowflake DataMart">
+          <h3>Cloud DataMart Development</h3>
+          <p>Building scalable DataMarts on Snowflake and Fabric integrating multiple data sources.</p>
+        </div>
       </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200?text=Project+2" alt="EQI Integration Project">
-        <h3>EQI Integration – Ministry of Education NZ</h3>
-        <p>Implemented Equity Index replacing decile system for policy and funding analytics.</p>
-      </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200?text=Project+3" alt="Snowflake DataMart Project">
-        <h3>Snowflake DataMart – Inland Revenue Department</h3>
-        <p>Developed DataMart and ETL workflows integrating SQL Server, Oracle, and flat files.</p>
+      <button id="showMoreBtn">Show More Expertise</button>
+      <div id="extraProjects" class="projects">
+        <div class="project">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=180&fit=crop" alt="AI Implementation">
+          <h3>AI & Machine Learning Solutions</h3>
+          <p>Implementing Azure AI services, predictive models, and Copilot integration for intelligent automation.</p>
+        </div>
+        <div class="project">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=180&fit=crop" alt="BI Projects">
+          <h3>End-to-End BI & Analytics</h3>
+          <p>Comprehensive data modeling, ETL design, and interactive dashboards across finance, insurance, and healthcare sectors.</p>
+        </div>
       </div>
     </div>
-    <button id="showMoreBtn">Show More Case Studies</button>
-    <div id="extraProjects" class="projects" style="display: none;">
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200?text=Project+4" alt="eNPS Survey Automation">
-        <h3>Customer eNPS Automation – Cigna</h3>
-        <p>Automated feedback collection and reporting with Power BI dashboards.</p>
-      </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200?text=Project+5" alt="Multiple BI Projects">
-        <h3>Multiple BI & DWH Projects – Aon, Cigna, Tenzing</h3>
-        <p>End-to-end data modelling, ETL design, and reporting across finance, insurance, and government sectors.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <div class="container">
-    <h2>Contact Us</h2>
-    <form action="https://formspree.io/f/yourformid" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="_replyto" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p class="contact-info">Email: <a href="mailto:sivashankar@gmail.com">sivashankar@gmail.com</a> | Phone: +64 21 000 0000</p>
-  </div>
-</section>
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p class="contact-info">Email: <a href="mailto:siva@datagrok.co.nz">siva@datagrok.co.nz</a> | Phone: 022 353 1343</p>
+    </div>
+  </section>
+</div>
 
 <footer>
   <div class="container">
     <p>Connect with us on <a href="https://linkedin.com/company/datagrok" target="_blank">LinkedIn</a> | <a href="https://github.com/datagrok" target="_blank">GitHub</a></p>
-    <p>Contact: <a href="mailto:sivashankar@gmail.com">sivashankar@gmail.com</a></p>
+    <p>Contact: <a href="mailto:siva@datagrok.co.nz">siva@datagrok.co.nz</a></p>
     <p>&copy; 2025 DataGrok Solutions</p>
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+  const sections = document.querySelectorAll('section');
+
+  function revealSections() {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if(sectionTop < triggerBottom) {
+        section.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealSections);
+  window.addEventListener('load', revealSections);
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  const extraProjects = document.getElementById('extraProjects');
+
+  showMoreBtn.addEventListener('click', () => {
+    extraProjects.classList.toggle('visible-grid');
+    showMoreBtn.textContent = extraProjects.classList.contains('visible-grid') ? 'Show Less Expertise' : 'Show More Expertise';
+  });
+</script>
 </body>
 </html>
