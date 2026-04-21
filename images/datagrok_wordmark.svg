@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
+  <rect width="680" height="155" fill="white"/>
+
+  <!-- Wordmark -->
+  <text text-anchor="middle" x="334" y="96"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="74" font-weight="bold" letter-spacing="-1">
+    <tspan fill="#1d4ed8">data</tspan><tspan fill="#FF9933">grok</tspan>
+  </text>
+
+  <!-- Emerald dot at end of k -->
+  <circle cx="498" cy="70" r="7" fill="#22c55e"/>
+
+  <!-- Flanking rules -->
+  <line x1="88"  y1="122" x2="236" y2="122" stroke="#22c55e" stroke-width="1" stroke-opacity="0.5"/>
+  <line x1="444" y1="122" x2="592" y2="122" stroke="#22c55e" stroke-width="1" stroke-opacity="0.5"/>
+
+  <!-- Tagline -->
+  <text text-anchor="middle" x="340" y="127"
+        font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"
+        font-size="10.5" fill="#64748b" letter-spacing="3">DATA AND AI CONSULTING</text>
+</svg>
