@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="680" height="155" viewBox="0 0 680 155" xmlns="http://www.w3.org/2000/svg">
-  <rect width="680" height="155" fill="white"/>
-
   <!-- Wordmark -->
   <text text-anchor="middle" x="334" y="96"
         font-family="'Helvetica Neue', Helvetica, Arial, sans-serif"

@@ -37,7 +37,7 @@ ul { list-style: none; }
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
-  padding: 0.6rem 0;
+  padding: 0.85rem 0;
 }
 
 .nav-container {
@@ -57,7 +57,7 @@ ul { list-style: none; }
 }
 
 .nav-logo-img {
-  width: 160px;
+  width: 210px;
   height: auto;
   object-fit: contain;
 }
@@ -187,7 +187,7 @@ ul { list-style: none; }
 }
 
 .hero-logo {
-  width: 320px;
+  width: 420px;
   height: auto;
   margin-bottom: 2rem;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
@@ -969,7 +969,7 @@ footer {
 }
 
 .footer-logo {
-  width: 180px;
+  width: 210px;
   height: auto;
   margin-bottom: 1rem;
 }
